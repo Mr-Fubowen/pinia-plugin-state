@@ -1,47 +1,43 @@
 # pinia-plugin-state
 
-> 🌟 一个简单易用的 [Pinia](https://pinia.vuejs.org/) 状态持久化插件，支持多种存储方式与灵活配置。
+> 🌟 A simple and easy-to-use Pinia state persistence plugin, supporting multiple storage methods and flexible configuration.
 
-## 特性
+## Features
 
--   支持 `localStorage`、`sessionStorage`、自定义存储
--   支持按字段持久化
--   开箱即用
+-   Supports `localStorage`, `sessionStorage`, and custom storage.
+-   Supports persistence by field.
+-   Zero-config, ready to use out-of-the-box.
 
-## 安装
+## Installation
 
 ```bash
 npm install pinia-plugin-state
-# 或
+# or
 yarn add pinia-plugin-state
 ```
 
-## 快速开始
+## Quick Start
 
 ```js
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import saveState from 'pinia-plugin-state'
 import App from './App.vue'
-
 const app = createApp(App)
 const pinia = createPinia()
-
-// 将持久化插件添加到 Pinia 实例
+// Add the persistence plugin to the Pinia instance
 pinia.use(saveState)
-
 app.use(pinia)
 app.mount('#app')
 ```
 
-## 基本用法
+## Basic Usage
 
-在你的 store 中开启持久化：
+Enable persistence in your store:
 
 ```js
 import { defineStore } from 'pinia'
 import { ref, reactive } from 'vue'
-
 export const useUserStore = defineStore(
     'user',
     () => {
@@ -58,36 +54,36 @@ export const useUserStore = defineStore(
         return { id, nickName, token, user }
     },
     {
-        // 启用并配置持久化选项
+        // Enable and configure persistence options
         enable: true,
-        // 可选：指定需要持久化的属性，点分割的路径写法
+        // Optional: Specify properties to persist, using dot notation for paths
         include: ['id', 'nickName', 'user.ip'],
-        // 可选：指定需要忽略的属性，点分割的路径写法
+        // Optional: Specify properties to ignore, using dot notation for paths
         exclude: ['user.ip.v4']
-        // 可选：指定存储方式，例如 localStorage, sessionStorage 等，默认为 localStorage
+        // Optional: Specify storage method, e.g., localStorage, sessionStorage, etc. Defaults to localStorage.
         // storage: localStorage,
-        // 可选：自定义存储键名称，默认：storeId
+        // Optional: Customize the storage key name. Defaults to storeId.
         // id: 'user',
-        // 可选：自定义存储有效期，单位：毫秒
-        // ttl: '1000'
+        // Optional: Customize the storage expiration time, in milliseconds.
+        // ttl: 1000
     }
 )
 ```
 
-## 配置项说明
+## Configuration Options
 
-| 选项      | 类型     | 说明                         | 是否必须 |
-| --------- | -------- | ---------------------------- | -------- |
-| `enable`  | Boolean  | 是否启用持久化（默认 false） | 是       |
-| `id`      | String   | 存储的键名（默认 store id）  | 否       |
-| `storage` | Storage  | 存储方式（local/session 等） | 否       |
-| `include` | String[] | 需要持久化的字段             | 否       |
-| `exclude` | String[] | 需要忽略的字段               | 否       |
-| `ttl`     | Number   | 存储有效期                   | 否       |
+| Option    | Type     | Description                                      | Required |
+| --------- | -------- | ------------------------------------------------ | -------- |
+| `enable`  | Boolean  | Whether to enable persistence (default: `false`) | Yes      |
+| `id`      | String   | Storage key name (default: store id)             | No       |
+| `storage` | Storage  | Storage method (local/session, etc.)             | No       |
+| `include` | String[] | Fields to persist                                | No       |
+| `exclude` | String[] | Fields to ignore                                 | No       |
+| `ttl`     | Number   | Storage expiration time (in milliseconds)        | No       |
 
-## 自定义存储
+## Custom Storage
 
-你可以实现自定义的 `storage`，只需实现 `getItem`、`setItem`、`removeItem` 方法。
+You can implement custom `storage` by providing `getItem`, `setItem`, and `removeItem` methods.
 
 ```js
 const storage = {
@@ -103,15 +99,13 @@ const storage = {
 }
 ```
 
-## 兼容性
+## Compatibility
 
--   兼容 Vue 3.x
--   依赖 Pinia 2.x
+-   Compatible with Vue 3.x
+-   Depends on Pinia 2.x
 
 ## License
 
-MIT
+## MIT
 
----
-
-> 感谢使用！如有问题欢迎提 [Issue](https://github.com/fubowen/pinia-plugin-persist/issues) 反馈。
+> Thank you for using! If you encounter any issues, please feel free to open an [Issue](https://github.com/fubowen/pinia-plugin-persist/issues).

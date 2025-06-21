@@ -1,6 +1,6 @@
 {
     "name": "pinia-plugin-state",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "private": false,
     "type": "module",
     "description": "Pinia 持久化插件，支持将状态持久化到本地存储，适用于 Vue 应用。",
