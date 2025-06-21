@@ -1,0 +1,16 @@
+{
+    "files.exclude": {
+        "**/node_modules": false
+    },
+    "search.exclude": {
+        "**/node_modules": true
+    },
+    "editor.formatOnSave": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "vite.config.js": "vite.config.*.js",
+        "index.html": "index.d.ts",
+        "package.json": ".gitignore,.prettierrc,package-lock.json,tsconfig.json"
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "name": "pinia-plugin-state",
+    "version": "0.0.1",
+    "private": false,
+    "type": "module",
+    "description": "Pinia 持久化插件，支持将状态持久化到本地存储，适用于 Vue 应用。",
+    "keywords": [
+        "pinia",
+        "pinia-plugin",
+        "storage",
+        "vue"
+    ],
+    "module": "./src/index.js",
+    "exports": {
+        ".": {
+            "types": "./src/index.d.ts",
+            "import": "./src/index.js"
+        }
+    },
+    "scripts": {
+        "test": "node ./test/index.test.js",
+        "build": "vite build"
+    },
+    "author": "Fubowen",
+    "license": "MIT",
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/Mr-Fubowen/pinia-plugin-state.git"
+    },
+    "dependencies": {
+        "lodash-es": "^4.17.21",
+        "pinia": "^3.0.3"
+    }
+}
